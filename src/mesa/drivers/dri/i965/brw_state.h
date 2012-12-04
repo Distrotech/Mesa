@@ -227,6 +227,10 @@ void gen7_init_vtable_surface_functions(struct brw_context *brw);
 void gen7_upload_3dstate_so_decl_list(struct brw_context *brw,
                                       const struct brw_vue_map *vue_map);
 
+/* gen7_sol_state.c */
+void upload_3dstate_so_decl_list(struct brw_context *brw,
+                                 const struct brw_vue_map *vue_map);
+
 /* brw_wm_sampler_state.c */
 uint32_t translate_wrap_mode(GLenum wrap, bool using_nearest);
 void upload_default_color(struct brw_context *brw,
