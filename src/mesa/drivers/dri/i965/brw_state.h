@@ -229,6 +229,9 @@ void gen7_upload_3dstate_so_decl_list(struct brw_context *brw,
                                       const struct brw_vue_map *vue_map);
 unsigned brw_swizzle_to_scs(GLenum swizzle, bool need_green_to_blue);
 
+/* gen8_surface_state.c */
+void gen8_init_vtable_surface_functions(struct brw_context *brw);
+
 /* gen7_sol_state.c */
 void upload_3dstate_so_decl_list(struct brw_context *brw,
                                  const struct brw_vue_map *vue_map);
