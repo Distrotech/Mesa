@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case ${1} in
+	x86_64|mips64|arm64|powerpc64)mkdir lib64;
+		ln -s lib64 lib;;
+	x86_32)mkdir libx32;
+		ln -s libx32 lib;;
+esac;
+
+make -C src/glsl/compiler/ V=1 LIBTOOL=/usr/bin/libtool
