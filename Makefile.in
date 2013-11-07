@@ -103,8 +103,8 @@ subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
 	$(top_srcdir)/src/gbm/main/gbm.pc.in bin/ar-lib bin/compile \
-	bin/config.guess bin/config.sub bin/install-sh bin/missing \
-	bin/ltmain.sh $(top_srcdir)/bin/ar-lib \
+	bin/config.guess bin/config.sub bin/depcomp bin/install-sh \
+	bin/missing bin/ltmain.sh $(top_srcdir)/bin/ar-lib \
 	$(top_srcdir)/bin/compile $(top_srcdir)/bin/config.guess \
 	$(top_srcdir)/bin/config.sub $(top_srcdir)/bin/install-sh \
 	$(top_srcdir)/bin/ltmain.sh $(top_srcdir)/bin/missing
