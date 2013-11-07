@@ -20691,7 +20691,9 @@ fi
 if test "x$enable_dri" = xyes; then
     # DRI must be shared, I think
     if test "$enable_static" = yes; then
-        as_fn_error $? "Cannot use static libraries for DRI drivers" "$LINENO" 5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Cannot use static libraries for DRI drivers" >&5
+$as_echo "$as_me: WARNING: Cannot use static libraries for DRI drivers" >&2;}
+	enable_static = no;
     fi
 
     # not a hard requirement as swrast does not depend on it
