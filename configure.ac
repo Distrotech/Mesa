@@ -762,7 +762,8 @@ PKG_CHECK_MODULES([LIBDRM], [libdrm >= $LIBDRM_REQUIRED],
 if test "x$enable_dri" = xyes; then
     # DRI must be shared, I think
     if test "$enable_static" = yes; then
-        AC_MSG_ERROR([Cannot use static libraries for DRI drivers])
+        AC_MSG_WARN([Cannot use static libraries for DRI drivers])
+	enable_static = no;
     fi
 
     # not a hard requirement as swrast does not depend on it
