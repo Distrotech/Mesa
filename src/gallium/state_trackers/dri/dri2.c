@@ -1297,7 +1297,7 @@ dri2_init_screen(__DRIscreen * sPriv)
    if (!configs)
       goto fail;
 
-   screen->can_share_buffer = pscreen->get_param(pscreen, PIPE_CAP_BUFFER_SHARE);
+   screen->can_share_buffer = true;
    screen->auto_fake_front = dri_with_format(sPriv);
    screen->broken_invalidate = !sPriv->dri2.useInvalidate;
    screen->lookup_egl_image = dri2_lookup_egl_image;
@@ -1343,6 +1343,7 @@ dri_kms_init_screen(__DRIscreen * sPriv)
    if (!configs)
       goto fail;
 
+   screen->can_share_buffer = false;
    screen->auto_fake_front = dri_with_format(sPriv);
    screen->broken_invalidate = !sPriv->dri2.useInvalidate;
    screen->lookup_egl_image = dri2_lookup_egl_image;

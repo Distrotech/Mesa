@@ -213,10 +213,6 @@ The integer capabilities:
 * ``PIPE_CAP_DRAW_INDIRECT``: Whether the driver supports taking draw arguments
   { count, instance_count, start, index_bias } from a PIPE_BUFFER resource.
   See pipe_draw_info.
-* ``PIPE_CAP_BUFFER_SHARE``: Whether it is possible to share buffers between
-  processes using the native window system. If this is 0, the buffers and
-  display targets available are only valid for in-process rendering and
-  scanout. This will be 1 for most HW drivers.
 
 
 .. _pipe_capf:

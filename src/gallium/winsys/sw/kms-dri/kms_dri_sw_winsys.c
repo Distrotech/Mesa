@@ -277,18 +277,6 @@ kms_sw_displaytarget_display(struct sw_winsys *ws,
    assert(0);
 }
 
-static int
-kms_sw_get_param(struct sw_winsys *ws,
-                 enum pipe_cap     param)
-{
-   switch (param) {
-   case PIPE_CAP_BUFFER_SHARE:
-      return 0;
-
-   default:
-      return 0;
-   }
-}
 
 static void
 kms_destroy_sw_winsys(struct sw_winsys *winsys)
@@ -323,8 +311,6 @@ kms_dri_create_winsys(int fd)
    ws->base.displaytarget_unmap = kms_sw_displaytarget_unmap;
 
    ws->base.displaytarget_display = kms_sw_displaytarget_display;
-
-   ws->base.get_param = kms_sw_get_param;
 
    return &ws->base;
 }

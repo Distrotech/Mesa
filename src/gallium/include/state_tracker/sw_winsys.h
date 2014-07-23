@@ -37,7 +37,6 @@
 
 #include "pipe/p_compiler.h" /* for boolean */
 #include "pipe/p_format.h"
-#include "pipe/p_defines.h" /* for pipe_cap */
 
 
 #ifdef __cplusplus
@@ -136,10 +135,6 @@ struct sw_winsys
    void 
    (*displaytarget_destroy)( struct sw_winsys *ws, 
                              struct sw_displaytarget *dt );
-
-   int
-   (*get_param)( struct sw_winsys *ws,
-                 enum pipe_cap param );
 };
 
 
