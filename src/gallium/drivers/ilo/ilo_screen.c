@@ -433,6 +433,8 @@ ilo_get_param(struct pipe_screen *screen, enum pipe_cap param)
    case PIPE_CAP_TEXTURE_GATHER_OFFSETS:
    case PIPE_CAP_TGSI_VS_WINDOW_SPACE_POSITION:
       return 0;
+   case PIPE_CAP_BUFFER_SHARE:
+      return 1;
 
    default:
       return 0;
