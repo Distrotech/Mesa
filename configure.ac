@@ -1624,7 +1624,7 @@ if test "x$enable_gallium_llvm" = xyes; then
         LLVM_CFLAGS=$LLVM_CPPFLAGS   # CPPFLAGS seem to be sufficient
         LLVM_CXXFLAGS=`strip_unwanted_llvm_flags "$LLVM_CONFIG --cxxflags"`
         LLVM_INCLUDEDIR=`$LLVM_CONFIG --includedir`
-        LLVM_LIBDIR=`$LLVM_CONFIG --libdir`
+#        LLVM_LIBDIR=`$LLVM_CONFIG --libdir`
 
         AC_COMPUTE_INT([LLVM_VERSION_MAJOR], [LLVM_VERSION_MAJOR],
             [#include "${LLVM_INCLUDEDIR}/llvm/Config/llvm-config.h"])
