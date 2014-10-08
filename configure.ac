@@ -827,10 +827,6 @@ PKG_CHECK_MODULES([LIBUDEV], [libudev >= $LIBUDEV_REQUIRED],
                   have_libudev=yes, have_libudev=no)
 
 if test "x$enable_dri" = xyes; then
-    if test "$enable_static" = yes; then
-        AC_MSG_ERROR([Cannot use static libraries for DRI drivers])
-    fi
-
     # not a hard requirement as swrast does not depend on it
     if test "x$have_libdrm" = xyes; then
         DRI_PC_REQ_PRIV="libdrm >= $LIBDRM_REQUIRED"
