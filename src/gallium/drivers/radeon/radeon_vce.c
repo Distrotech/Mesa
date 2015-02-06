@@ -428,7 +428,7 @@ error:
  */
 bool rvce_is_fw_version_supported(struct r600_common_screen *rscreen)
 {
-	return rscreen->info.vce_fw_version == ((40 << 24) | (2 << 16) | (2 << 8));
+	return rscreen->info.vce_fw_version >= ((40 << 24) | (2 << 16) | (2 << 8));
 }
 
 /**
