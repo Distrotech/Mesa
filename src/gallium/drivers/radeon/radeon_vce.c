@@ -353,6 +353,7 @@ struct pipe_video_codec *rvce_create_encoder(struct pipe_context *context,
 	if (!enc)
 		return NULL;
 
+	enc->fw_ver = rscreen->info.vce_fw_version;
 	if (rscreen->info.drm_major == 3)
 		enc->use_vm = true;
 	if ((rscreen->info.drm_major > 2) || (rscreen->info.drm_minor >= 42))

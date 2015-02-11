@@ -100,6 +100,7 @@ struct rvce_encoder {
 	struct rvid_buffer		cpb;
 	struct pipe_h264_enc_picture_desc pic;
 	bool				use_vm;
+	unsigned			fw_ver;
 	bool				use_vui;
 };
 

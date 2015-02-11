@@ -44,6 +44,8 @@
 #include "radeon_video.h"
 #include "radeon_vce.h"
 
+#define FW_40_2_2 ((40 << 24) | (2 << 16) | (2 << 8))
+
 static const unsigned profiles[7] = { 66, 77, 88, 100, 110, 122, 244 };
 
 static struct rvce_cpb_slot *current_slot(struct rvce_encoder *enc)
@@ -145,6 +147,10 @@ static void rate_control(struct rvce_encoder *enc)
 	RVCE_CS(0x00000000); // encBPicsDeltaQP
 	RVCE_CS(0x00000000); // encReferenceBPicsDeltaQP
 	RVCE_CS(0x00000000); // encRateControlReInitDisable
+	if (enc->fw_ver > FW_40_2_2) {
+		RVCE_CS(0x00000000); // encLCVBRInitQPFlag
+		RVCE_CS(0x00000000); // encLCVBRSATDBasedNonlinearBitBudgetFlag
+	}
 	RVCE_END();
 }
 
@@ -314,7 +320,10 @@ static void encode(struct rvce_encoder *enc)
 	RVCE_END();
 
 	RVCE_BEGIN(0x03000001); // encode
-	RVCE_CS(0x00000000); // insertHeaders
+	if ((enc->fw_ver > FW_40_2_2) && (!enc->pic.frame_num))
+		RVCE_CS(0x00000011); // insertHeaders
+	else
+		RVCE_CS(0x00000000); // insertHeaders
 	RVCE_CS(0x00000000); // pictureStructure
 	RVCE_CS(enc->bs_size); // allowedMaxBitstreamSize
 	RVCE_CS(0x00000000); // forceRefreshMap
@@ -328,7 +337,7 @@ static void encode(struct rvce_encoder *enc)
 	RVCE_CS(align(enc->luma->npix_y, 16)); // encInputFrameYPitch
 	RVCE_CS(enc->luma->level[0].pitch_bytes); // encInputPicLumaPitch
 	RVCE_CS(enc->chroma->level[0].pitch_bytes); // encInputPicChromaPitch
-	RVCE_CS(0x00000000); // encInputPic(Addr|Array)Mode
+	RVCE_CS(0x00000000); // encInputPic(Addr|Array)Mode,encDisable(TwoPipeMode|MBOffloading)
 	RVCE_CS(0x00000000); // encInputPicTileConfig
 	RVCE_CS(enc->pic.picture_type); // encPicType
 	RVCE_CS(enc->pic.picture_type == PIPE_H264_ENC_PICTURE_TYPE_IDR); // encIdrFlag
