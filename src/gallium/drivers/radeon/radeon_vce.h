@@ -43,6 +43,9 @@
 #define RVCE_READWRITE(buf, domain, off) rvce_add_buffer(enc, (buf), RADEON_USAGE_READWRITE, (domain), (off))
 #define RVCE_END() *begin = (&enc->cs->buf[enc->cs->cdw] - begin) * 4; }
 
+#define RVCE_MAX_BITSTREAM_OUTPUT_ROW_SIZE (4096 * 16 * 2.5)
+#define RVCE_MAX_AUX_BUFFER_NUM 4
+
 struct r600_common_screen;
 
 /* driver dependent callback */
@@ -102,6 +105,7 @@ struct rvce_encoder {
 	bool				use_vm;
 	unsigned			fw_ver;
 	bool				use_vui;
+	bool				use_2p;
 };
 
 struct pipe_video_codec *rvce_create_encoder(struct pipe_context *context,
