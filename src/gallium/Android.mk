@@ -70,6 +70,7 @@ SUBDIRS += drivers/r600
 endif
 ifneq ($(filter radeonsi, $(MESA_GPU_DRIVERS)),)
 SUBDIRS += drivers/radeonsi
+SUBDIRS += winsys/amdgpu/drm
 endif
 endif
 endif
