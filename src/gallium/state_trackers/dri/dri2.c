@@ -1425,6 +1425,7 @@ static const __DRIextension *dri_robust_screen_extensions[] = {
    &dri2RendererQueryExtension.base,
    &dri2ConfigQueryExtension.base,
    &dri2ThrottleExtension.base,
+   &dri2FenceExtension.base,
    &dri2Robustness.base,
    NULL
 };
